@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using WebApi.OutputCache.V2;
 
 namespace WebApi.Controllers
 {
@@ -56,6 +57,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>HttpResponseMessage</returns>
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)]
         public HttpResponseMessage Get(int id)
         {
             PropertyAPIModel property = PropertyManager.GetProperty(id);
